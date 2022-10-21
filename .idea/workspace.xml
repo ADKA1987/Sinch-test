@@ -14,6 +14,7 @@
       <change afterPath="$PROJECT_DIR$/problem3/src/main/java/com/alaa/problem3/Problem3Application.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/problem3/src/main/resources/application.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/problem3/src/test/java/com/alaa/problem3/Problem3ApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +94,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1666361844244</updated>
-      <workItem from="1666361845964" duration="825000" />
+      <workItem from="1666361845964" duration="899000" />
     </task>
     <servers />
   </component>
