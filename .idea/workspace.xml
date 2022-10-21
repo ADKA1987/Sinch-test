@@ -5,16 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2a61e4a-a78a-4aaf-b41a-8985f7d90c11" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/problem1/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/problem1/src/main/java/org/alaa/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/problem2/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/problem2/src/main/java/org/alaa/Main.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/problem3/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/problem3/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/problem3/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
@@ -103,7 +93,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1666361844244</updated>
-      <workItem from="1666361845964" duration="479000" />
+      <workItem from="1666361845964" duration="825000" />
     </task>
     <servers />
   </component>
