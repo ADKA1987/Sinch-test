@@ -5,21 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2a61e4a-a78a-4aaf-b41a-8985f7d90c11" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/problem3/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/problem3/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/problem3/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/problem3/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/problem3/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/problem3/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/problem3/src/main/java/com/alaa/problem3/Problem3Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/problem3/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/problem3/src/test/java/com/alaa/problem3/Problem3ApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problem1/src/main/java/org/alaa/GetComparedNumber.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problem1/src/main/java/org/alaa/GetPaired.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problem1/src/main/java/org/alaa/ListGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problem1/src/main/java/org/alaa/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/problem1/src/main/java/org/alaa/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -38,6 +40,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -45,7 +51,7 @@
     "jdk.selected.JAVA_MODULE": "11"
   }
 }]]></component>
-  <component name="RunManager" selected="Spring Boot.Problem3Application">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.alaa.Main" />
       <module name="problem2" />
@@ -81,8 +87,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -94,12 +100,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1666361844244</updated>
-      <workItem from="1666361845964" duration="899000" />
+      <workItem from="1666361845964" duration="11062000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:jakarta.xml.ws:jakarta.xml.ws-api" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
