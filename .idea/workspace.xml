@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2a61e4a-a78a-4aaf-b41a-8985f7d90c11" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/problem1/src/main/java/org/alaa/GetComparedNumber.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/problem1/src/main/java/org/alaa/GetPaired.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/problem1/src/main/java/org/alaa/ListGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/problem1/src/main/java/org/alaa/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/problem1/src/main/java/org/alaa/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problem1/src/main/java/org/alaa/ListGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/problem1/src/main/java/org/alaa/ListGenerator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +98,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1666361844244</updated>
-      <workItem from="1666361845964" duration="11062000" />
+      <workItem from="1666361845964" duration="11209000" />
     </task>
     <servers />
   </component>

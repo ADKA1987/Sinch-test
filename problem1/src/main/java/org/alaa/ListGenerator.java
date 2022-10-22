@@ -6,12 +6,13 @@ import java.util.Scanner;
 
 public class ListGenerator
 {
+    final static Scanner scan = new Scanner(System.in);
     static List<Integer> getTheListOfNumbersToCompare(final int k)
     {
         boolean isOk = false;
         List<Integer> a = new ArrayList<Integer>();
         while (!isOk) {
-            Scanner scan = new Scanner(System.in);
+
             System.out.print("Please enter the array size : ");
 
             if(scan.hasNextInt())
@@ -37,8 +38,7 @@ public class ListGenerator
 
     private static List<Integer> getArrayNumbers(final int arraySize,final int k)
     {
-        Scanner scan = new Scanner(System.in);
-        List<Integer> a = new ArrayList<Integer>();
+        List<Integer> a = new ArrayList<>();
         boolean isOk = false;
         while (!isOk) {
 
