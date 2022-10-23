@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2a61e4a-a78a-4aaf-b41a-8985f7d90c11" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/problem2/src/test/java/MainTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/problem2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/problem2/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/problem2/src/main/java/org/alaa/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/problem2/src/main/java/org/alaa/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,15 +46,26 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "11",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "last_opened_file_path": "C:/Projects/tmp/silvercore-provider",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.MainTest">
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.alaa.Main" />
-      <module name="problem2" />
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.Application">
+    <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.alaa.Application" />
+      <module name="problem3" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.alaa.*" />
@@ -70,6 +79,19 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.alaa.Main" />
       <module name="problem1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.alaa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.alaa.Main" />
+      <module name="problem2" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.alaa.*" />
@@ -99,6 +121,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="problem3" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.alaa.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Problem3Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="problem3" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.alaa.problem3.Problem3Application" />
@@ -108,8 +137,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MainTest" />
+        <item itemvalue="Application.Application" />
         <item itemvalue="Application.Main (1)" />
+        <item itemvalue="JUnit.MainTest" />
         <item itemvalue="JUnit.MainTest.given_correct_input_when_run_then_correct_value" />
         <item itemvalue="Application.Main" />
       </list>
@@ -124,7 +154,7 @@
       <option name="presentableId" value="Default" />
       <updated>1666361844244</updated>
       <workItem from="1666361845964" duration="11209000" />
-      <workItem from="1666456172655" duration="10570000" />
+      <workItem from="1666456172655" duration="16640000" />
     </task>
     <servers />
   </component>
@@ -155,6 +185,11 @@
           <url>file://$PROJECT_DIR$/problem2/src/main/java/org/alaa/Main.java</url>
           <line>35</line>
           <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/problem3/src/main/java/org/alaa/infrastructure/PolishNotationInfrastructureRepository.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
