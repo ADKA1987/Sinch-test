@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2a61e4a-a78a-4aaf-b41a-8985f7d90c11" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/problem2/src/test/java/MainTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/problem2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/problem2/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/problem2/src/main/java/org/alaa/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/problem2/src/main/java/org/alaa/Main.java" afterDir="false" />
@@ -35,21 +36,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;11&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "11",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
-  <component name="RunManager" selected="Application.Main (1)">
+}]]></component>
+  <component name="RunManager" selected="JUnit.MainTest">
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.alaa.Main" />
       <module name="problem2" />
@@ -76,6 +80,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="problem2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MainTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTest.given_correct_input_when_run_then_correct_value" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="problem2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MainTest" />
+      <option name="METHOD_NAME" value="given_correct_input_when_run_then_correct_value" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Problem3Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="problem3" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.alaa.problem3.Problem3Application" />
@@ -85,7 +108,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MainTest" />
         <item itemvalue="Application.Main (1)" />
+        <item itemvalue="JUnit.MainTest.given_correct_input_when_run_then_correct_value" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -99,7 +124,7 @@
       <option name="presentableId" value="Default" />
       <updated>1666361844244</updated>
       <workItem from="1666361845964" duration="11209000" />
-      <workItem from="1666456172655" duration="8439000" />
+      <workItem from="1666456172655" duration="10570000" />
     </task>
     <servers />
   </component>
@@ -128,8 +153,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/problem2/src/main/java/org/alaa/Main.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="8" />
+          <line>35</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

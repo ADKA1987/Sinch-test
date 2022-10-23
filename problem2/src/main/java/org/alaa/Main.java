@@ -6,34 +6,54 @@ import java.util.Scanner;
 import java.util.Stack;
 
 import static java.lang.System.exit;
+import static java.lang.System.in;
 
 public class Main
 {
     static Stack stack = new Stack();
     static BigDecimal num1;
     static BigDecimal num2;
-    static String expression;
-    static Scanner scanner = new Scanner(System.in);
-
+   private static final Scanner scanner = new Scanner(System.in);
     public static void main(String[] args)
     {
         System.out.println("Please enter the Polish notation expression");
-        expression = scanner.nextLine();
+        String expression = scanner.nextLine();
+        BigDecimal value=null;
+        try
+        {
+            value= run(expression);
+
+        }catch (RuntimeException e){
+            System.out.println("error");
+            exit(0);
+        }
+
+        System.out.println(value);
+    }
+
+    public static BigDecimal run(String expression)
+    {
         String[] input = expression.split("\\s+");
+
+
+        BigDecimal result = null;
         for (int i = input.length - 1; i >= 0; i--)
         {
 
-             boolean isNumeric= checkIfNumeric(input[i]);
+            boolean isNumeric= checkIfNumeric(input[i]);
 
             if (isNumeric)
             {
+                if(stack.size()==2 && i ==input.length-1) {
+                    throw new RuntimeException("error");
+                }
                 stack.push(BigDecimal.valueOf(Double.parseDouble(String.valueOf(input[i]))));
             }
-            if((stack.size()==2 && isNumeric)||
-                    (stack.size()==1 && !isNumeric) ) {
-                System.out.println("error");
-                exit(0);
+
+            if(stack.size()==1 && !isNumeric)  {
+                throw new RuntimeException("error");
             }
+
             if (input[i].equals("+"))
             {
                 num1 = (BigDecimal)stack.pop();
@@ -59,7 +79,8 @@ public class Main
 
         }
         while(!stack.isEmpty())
-                        System.out.println(BigDecimal.valueOf(Double.parseDouble(String.valueOf(stack.pop()))).setScale(2,RoundingMode.HALF_DOWN));
+            result=BigDecimal.valueOf(Double.parseDouble(String.valueOf(stack.pop()))).setScale(2,RoundingMode.HALF_DOWN);
+        return result;
     }
 
     private static boolean checkIfNumeric(String s)
