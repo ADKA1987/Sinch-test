@@ -31,7 +31,7 @@ public class Controller
     private static final String GET_POLISH_NOTATION="/polish-notion/v1/get-result";
 
     @PostMapping(value = GET_POLISH_NOTATION,consumes = "application/json",produces = "application/json")
-    public ResponseEntity getPolishNotation(@RequestBody Request request,
+    public ResponseEntity<?> getPolishNotation(@RequestBody Request request,
             @RequestHeader(value = REQUEST_USER) String requestUser,
             @RequestHeader(value = REQUEST_SYSTEM) String requestSystem){
 
@@ -39,14 +39,14 @@ public class Controller
         try{
             logRequest(transactionId,requestUser,requestSystem,request);
             return validationService.validateRequest(requestUser,requestSystem,request)
-                    .fold(invalid->new ResponseEntity(invalid,HttpStatus.BAD_REQUEST),
+                    .fold(invalid->new ResponseEntity<>(invalid,HttpStatus.BAD_REQUEST),
                             valid->service.getPolishNotion(transactionId,valid._1,valid._2,valid._3).fold(
-                                    invalid-> new ResponseEntity(invalid,HttpStatus.BAD_REQUEST),
-                                    serviceValid-> new ResponseEntity(new Response(String.valueOf(serviceValid)),HttpStatus.OK)
+                                    invalid-> new ResponseEntity<>(invalid,HttpStatus.BAD_REQUEST),
+                                    serviceValid-> new ResponseEntity<>(new Response(String.valueOf(serviceValid)),HttpStatus.OK)
                             ));
 
         }catch (Exception e){
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
