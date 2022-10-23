@@ -1,6 +1,7 @@
 package org.alaa.controller;
 
 import org.alaa.controller.domain.Request;
+import org.alaa.controller.domain.Response;
 import org.alaa.service.Service;
 import org.alaa.service.ValidationService;
 import org.slf4j.Logger;
@@ -41,7 +42,7 @@ public class Controller
                     .fold(invalid->new ResponseEntity(invalid,HttpStatus.BAD_REQUEST),
                             valid->service.getPolishNotion(transactionId,valid._1,valid._2,valid._3).fold(
                                     invalid-> new ResponseEntity(invalid,HttpStatus.BAD_REQUEST),
-                                    serviceValid-> new ResponseEntity(serviceValid,HttpStatus.OK)
+                                    serviceValid-> new ResponseEntity(new Response(String.valueOf(serviceValid)),HttpStatus.OK)
                             ));
 
         }catch (Exception e){
@@ -52,6 +53,6 @@ public class Controller
     private void logRequest(final String transactionId, final String requestUser, final  String requestSystem,final Request request)
     {
         String requestLog="TransactionId: "+transactionId+" ,RequestUser: "+requestUser+" ,RequestSystem: "+ requestSystem+" ,Request: "+request;
-        logger.info(requestLog);
+        logger.info("request: "+requestLog);
     }
 }

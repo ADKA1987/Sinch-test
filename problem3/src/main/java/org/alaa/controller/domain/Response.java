@@ -6,7 +6,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
-import java.math.BigDecimal;
 
 @AllArgsConstructor
 @Getter
@@ -15,5 +14,5 @@ import java.math.BigDecimal;
 public class Response
 {
     @JsonProperty("result")
-    BigDecimal result;
+    String result;
 }
