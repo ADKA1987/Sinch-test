@@ -8,6 +8,8 @@ import lombok.ToString;
 
 import java.util.Objects;
 
+import static org.alaa.domain.ErrorCode.VALIDATION_ERROR_CODE;
+
 @AllArgsConstructor
 @Getter
 @EqualsAndHashCode
@@ -18,10 +20,10 @@ public class RequestUser
 
     private final static String REQUESTING_USER_CANNOT_BE_EMPTY = "RequestingSystem cannot be empty";
 
-    public static Validation<String, RequestUser> validate(final String value) {
+    public static Validation<Error, RequestUser> validate(final String value) {
 
         return null == value || Objects.requireNonNull(value).isBlank() ?
-                Validation.invalid( REQUESTING_USER_CANNOT_BE_EMPTY)
+                Validation.invalid( new Error(VALIDATION_ERROR_CODE.value,REQUESTING_USER_CANNOT_BE_EMPTY))
                 : Validation.valid(new RequestUser(value));
     }
 }

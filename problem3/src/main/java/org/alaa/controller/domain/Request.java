@@ -14,6 +14,6 @@ import lombok.ToString;
 @ToString
 public class Request
 {
-    @JsonProperty("input")
+    @JsonProperty(value = "input",required = true)
     String input;
 }

@@ -1,7 +1,9 @@
 package org.alaa.infrastructure;
 
-
 import io.vavr.control.Validation;
+import lombok.extern.slf4j.Slf4j;
+import org.alaa.domain.Error;
+import org.alaa.domain.ErrorResponse;
 import org.alaa.domain.PolishNotationDomain;
 import org.alaa.domain.RequestSystem;
 import org.alaa.domain.RequestUser;
@@ -9,20 +11,23 @@ import org.alaa.infrastructure.domain.IPolishNotationInfrastructureRepository;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.List;
 import java.util.Stack;
+
+import static org.alaa.domain.ErrorCode.BUSINESS_VALIDATION_ERROR_CODE;
+@Slf4j
 
 public class PolishNotationInfrastructureRepository implements IPolishNotationInfrastructureRepository
 {
 
-
     @Override
-    public Validation<String,BigDecimal> getPolishNotation(final String transactionId,final RequestUser requestUser,final RequestSystem requestSystem,
+    public Validation<ErrorResponse,BigDecimal> getPolishNotation(final String transactionId,final RequestUser requestUser,final RequestSystem requestSystem,
             final PolishNotationDomain polishNotationDomain)
     {
-
+        log.info("Request to infrastructure with parameters:\nTransactionId:"+ transactionId+",\nRequestUser: "+ requestUser.getValue()+",\nRequestSystem: "+requestSystem.getValue()+"\nPolishNotation string: "+polishNotationDomain.getValue());
         return run(polishNotationDomain.getValue());
     }
-    public  Validation<String,BigDecimal> run(String expression)
+    public  Validation<ErrorResponse,BigDecimal> run(String expression)
     {
         String[] input = expression.split("\\s+");
         final Stack stack = new Stack();
@@ -33,17 +38,39 @@ public class PolishNotationInfrastructureRepository implements IPolishNotationIn
 
             boolean isNumeric= checkIfNumeric(input[i]);
 
-            if (isNumeric)
-            {
+            // Check if the input is not numeric and not one of the operations
+            if (!isNumeric &&!input[i].equals("+")&&!input[i].equals("-")&&!input[i].equals("*")&&!input[i].equals("/"))
 
-                stack.push(BigDecimal.valueOf(Double.parseDouble(String.valueOf(input[i]))));
-                if(stack.size()==2 && i ==0) {
-                    return Validation.invalid("error");
-                }
+            {
+                Error error=  Error.builder()
+                        .code(BUSINESS_VALIDATION_ERROR_CODE.getValue())
+                        .message("The input string should contain numbers and operations.").build();
+                log.error("Error from infrastructure, result:"+error);
+                return Validation.invalid(new ErrorResponse(List.of(error)));
             }
 
+
+            // Check if the input is numeric
+            if (isNumeric)
+            {
+                stack.push(BigDecimal.valueOf(Double.parseDouble(String.valueOf(input[i]))));
+
+                // check if the input is only numbers without operation
+                if((stack.size()==2 && i ==0)) {
+                    Error error=  Error.builder()
+                            .code(BUSINESS_VALIDATION_ERROR_CODE.getValue())
+                            .message("error").build();
+                    log.error("Error from infrastructure, result:"+error);
+                    return Validation.invalid(new ErrorResponse(List.of(error)));
+                }
+            }
+            // check if the input is only one number
             if(stack.size()==1 && !isNumeric)  {
-                return Validation.invalid("error");
+                Error error=  Error.builder()
+                        .code(BUSINESS_VALIDATION_ERROR_CODE.getValue())
+                        .message("error").build();
+                log.error("Error from infrastructure, result:"+error);
+                return Validation.invalid(new ErrorResponse(List.of(error)));
             }
 
             BigDecimal num1;
@@ -72,8 +99,10 @@ public class PolishNotationInfrastructureRepository implements IPolishNotationIn
 
 
         }
+        // Return the result
         while(!stack.isEmpty())
             result=BigDecimal.valueOf(Double.parseDouble(String.valueOf(stack.pop()))).setScale(2, RoundingMode.HALF_DOWN);
+        log.info("Response from infrastructure, result:"+result);
         return Validation.valid(result);
     }
 

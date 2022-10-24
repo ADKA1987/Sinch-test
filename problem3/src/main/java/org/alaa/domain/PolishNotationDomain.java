@@ -9,6 +9,8 @@ import org.alaa.controller.domain.Request;
 
 import java.util.Objects;
 
+import static org.alaa.domain.ErrorCode.VALIDATION_ERROR_CODE;
+
 @AllArgsConstructor
 @Getter
 @EqualsAndHashCode
@@ -19,10 +21,10 @@ public class PolishNotationDomain
 
     private final static String PolishNotationDomain_CANNOT_BE_EMPTY = "PolishNotationDomain cannot be empty";
 
-    public static Validation<String, PolishNotationDomain> validate(final Request value) {
+    public static Validation<Error, PolishNotationDomain> validate(final Request value) {
 
         return null == value.getInput() || Objects.requireNonNull(value.getInput()).isBlank() ?
-                Validation.invalid( PolishNotationDomain_CANNOT_BE_EMPTY)
+                Validation.invalid(new Error(VALIDATION_ERROR_CODE.value, PolishNotationDomain_CANNOT_BE_EMPTY))
                 : Validation.valid(new PolishNotationDomain(value.getInput()));
     }
 }

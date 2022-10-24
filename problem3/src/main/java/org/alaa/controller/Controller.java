@@ -1,12 +1,22 @@
 package org.alaa.controller;
 
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.slf4j.Slf4j;
 import org.alaa.controller.domain.Request;
 import org.alaa.controller.domain.Response;
+import org.alaa.domain.Error;
+import org.alaa.domain.ErrorCode;
 import org.alaa.domain.ErrorResponse;
 import org.alaa.service.Service;
 import org.alaa.service.ValidationService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +25,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
-
+@Tag(name = "Polish Notation Controller",description = "This controller will contain all operation about Polish Notation")
 @RestController
+@Slf4j
 public class Controller
 {
     @Autowired
@@ -28,32 +40,67 @@ public class Controller
     private Service service;
     private static final String REQUEST_USER="RequestUser";
     private static final String REQUEST_SYSTEM="RequestSystem";
-    private final static Logger logger= LoggerFactory.getLogger(Controller.class);
     private static final String GET_POLISH_NOTATION="/polish-notion/v1/get-result";
+
+
+
+@Operation(description = "This Api will take the list of numbers and operation then it will evaluate it based on Polish Notation.",
+        responses ={
+        @ApiResponse(responseCode = "200", description = "evaluates arithmetic expressions written in Polish notation",
+                content = @Content(
+                mediaType = "application/json",
+                schema = @Schema(implementation = Response.class))),
+        @ApiResponse(responseCode = "400", description = "Return list of errors.",
+                        content = @Content(
+                                mediaType = "application/json",
+                                schema = @Schema(implementation = ErrorResponse.class),
+                                examples = {
+                                        @ExampleObject(
+                                                name = "Invalid Request",
+                                                value = "{\"code\": \"4000\", \"message\" : \"RequestingSystem cannot be empty\"}"
+                                        ),
+                                        @ExampleObject(
+                                                name = "Business Invalid Request",
+                                                value = "{\"code\": \"4001\", \"message\" : \"error\"}"
+                                        )
+                        })),
+        @ApiResponse(responseCode = "500", description = "Generic internal server error",
+                        content = @Content(
+                                mediaType = "application/json",
+                                schema = @Schema(implementation = ErrorResponse.class),
+                examples = {
+                        @ExampleObject(
+                                name = "Invalid Request",
+                                value = "{\"code\": \"5001\", \"message\" : \"Error message\"}"
+                        )}))})
 
     @PostMapping(value = GET_POLISH_NOTATION,consumes = "application/json",produces = "application/json")
     public ResponseEntity<?> getPolishNotation(@RequestBody Request request,
-            @RequestHeader(value = REQUEST_USER) String requestUser,
-            @RequestHeader(value = REQUEST_SYSTEM) String requestSystem){
+                                                @RequestHeader(value = REQUEST_USER) String requestUser,
+                                                @RequestHeader(value = REQUEST_SYSTEM) String requestSystem){
 
+    try{
         String transactionId= UUID.randomUUID().toString();
-        try{
-            logRequest(transactionId,requestUser,requestSystem,request);
-            return validationService.validateRequest(requestUser,requestSystem,request)
-                    .fold(invalid->new ResponseEntity<>(invalid,HttpStatus.BAD_REQUEST),
-                            valid->service.getPolishNotion(transactionId,valid._1,valid._2,valid._3).fold(
-                                    invalid-> new ResponseEntity<>(new ErrorResponse(4001,invalid),HttpStatus.BAD_REQUEST),
-                                    serviceValid-> new ResponseEntity<>(new Response(String.valueOf(serviceValid)),HttpStatus.OK)
-                            ));
+        logRequest(transactionId,requestUser,requestSystem,request);
+
+            return validationService
+                    .validateRequest(requestUser,requestSystem,request)
+                    .fold(invalid-> new ResponseEntity<>(new ErrorResponse(invalid.asJava()),HttpStatus.BAD_REQUEST),
+                            valid->service
+                                    .getPolishNotion(transactionId,valid._1,valid._2,valid._3)
+                                    .fold(errorResponse-> new ResponseEntity<>(errorResponse,HttpStatus.BAD_REQUEST),
+                                            serviceValid-> new ResponseEntity<>(new Response(String.valueOf(serviceValid)),HttpStatus.OK)
+                                    ));
 
         }catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        return new ResponseEntity<>(new ErrorResponse(List.of(new Error(ErrorCode.INTERNAL_SERVER_ERROR.getValue(), e.getMessage()))),HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     }
 
     private void logRequest(final String transactionId, final String requestUser, final  String requestSystem,final Request request)
     {
         String requestLog="TransactionId: "+transactionId+" ,RequestUser: "+requestUser+" ,RequestSystem: "+ requestSystem+" ,Request: "+request;
-        logger.info("request: "+requestLog);
+        log.info("request: "+requestLog);
     }
 }

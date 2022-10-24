@@ -2,6 +2,7 @@ package org.alaa.service;
 
 import io.vavr.control.Validation;
 import lombok.AllArgsConstructor;
+import org.alaa.domain.ErrorResponse;
 import org.alaa.domain.PolishNotationDomain;
 import org.alaa.domain.RequestSystem;
 import org.alaa.domain.RequestUser;
@@ -15,7 +16,7 @@ public class Service
 
     IPolishNotationInfrastructureRepository polishNotationInfrastructureRepository;
 
-    public Validation<String,BigDecimal> getPolishNotion(final String transactionId,final RequestUser requestUser,final RequestSystem requestSystem,final PolishNotationDomain polishNotationDomain)
+    public Validation<ErrorResponse,BigDecimal> getPolishNotion(final String transactionId,final RequestUser requestUser,final RequestSystem requestSystem,final PolishNotationDomain polishNotationDomain)
     {
         return polishNotationInfrastructureRepository.getPolishNotation(transactionId,requestUser,requestSystem,polishNotationDomain);
     }
