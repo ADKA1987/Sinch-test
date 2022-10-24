@@ -1,13 +1,15 @@
 package org.alaa.infrastructure;
 
-import io.vavr.control.Validation;
+import io.vavr.control.Either;
 import lombok.extern.slf4j.Slf4j;
 import org.alaa.domain.Error;
 import org.alaa.domain.ErrorResponse;
 import org.alaa.domain.PolishNotationDomain;
 import org.alaa.domain.RequestSystem;
 import org.alaa.domain.RequestUser;
+import org.alaa.domain.Result;
 import org.alaa.infrastructure.domain.IPolishNotationInfrastructureRepository;
+import reactor.core.publisher.Mono;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -16,18 +18,17 @@ import java.util.Stack;
 
 import static org.alaa.domain.ErrorCode.BUSINESS_VALIDATION_ERROR_CODE;
 @Slf4j
-
 public class PolishNotationInfrastructureRepository implements IPolishNotationInfrastructureRepository
 {
 
     @Override
-    public Validation<ErrorResponse,BigDecimal> getPolishNotation(final String transactionId,final RequestUser requestUser,final RequestSystem requestSystem,
+    public Mono<Either<ErrorResponse, Result>> getPolishNotation(final String transactionId,final RequestUser requestUser,final RequestSystem requestSystem,
             final PolishNotationDomain polishNotationDomain)
     {
         log.info("Request to infrastructure with parameters:\nTransactionId:"+ transactionId+",\nRequestUser: "+ requestUser.getValue()+",\nRequestSystem: "+requestSystem.getValue()+"\nPolishNotation string: "+polishNotationDomain.getValue());
         return run(polishNotationDomain.getValue());
     }
-    public  Validation<ErrorResponse,BigDecimal> run(String expression)
+    public   Mono<Either<ErrorResponse,Result>> run(final String expression)
     {
         String[] input = expression.split("\\s+");
         final Stack stack = new Stack();
@@ -46,7 +47,7 @@ public class PolishNotationInfrastructureRepository implements IPolishNotationIn
                         .code(BUSINESS_VALIDATION_ERROR_CODE.getValue())
                         .message("The input string should contain numbers and operations.").build();
                 log.error("Error from infrastructure, result:"+error);
-                return Validation.invalid(new ErrorResponse(List.of(error)));
+                return Mono.just(Either.left(new ErrorResponse(List.of(error))));
             }
 
 
@@ -61,7 +62,7 @@ public class PolishNotationInfrastructureRepository implements IPolishNotationIn
                             .code(BUSINESS_VALIDATION_ERROR_CODE.getValue())
                             .message("error").build();
                     log.error("Error from infrastructure, result:"+error);
-                    return Validation.invalid(new ErrorResponse(List.of(error)));
+                    return Mono.just(Either.left(new ErrorResponse(List.of(error))));
                 }
             }
             // check if the input is only one number
@@ -70,7 +71,7 @@ public class PolishNotationInfrastructureRepository implements IPolishNotationIn
                         .code(BUSINESS_VALIDATION_ERROR_CODE.getValue())
                         .message("error").build();
                 log.error("Error from infrastructure, result:"+error);
-                return Validation.invalid(new ErrorResponse(List.of(error)));
+                return Mono.just(Either.left(new ErrorResponse(List.of(error))));
             }
 
             BigDecimal num1;
@@ -103,7 +104,7 @@ public class PolishNotationInfrastructureRepository implements IPolishNotationIn
         while(!stack.isEmpty())
             result=BigDecimal.valueOf(Double.parseDouble(String.valueOf(stack.pop()))).setScale(2, RoundingMode.HALF_DOWN);
         log.info("Response from infrastructure, result:"+result);
-        return Validation.valid(result);
+        return Mono.just(Either.right(new Result(result)));
     }
 
     private boolean checkIfNumeric(String s)

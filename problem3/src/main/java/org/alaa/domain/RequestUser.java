@@ -18,7 +18,7 @@ public class RequestUser
 {
     String value;
 
-    private final static String REQUESTING_USER_CANNOT_BE_EMPTY = "RequestingSystem cannot be empty";
+    private final static String REQUESTING_USER_CANNOT_BE_EMPTY = "RequestingUser cannot be empty";
 
     public static Validation<Error, RequestUser> validate(final String value) {
 

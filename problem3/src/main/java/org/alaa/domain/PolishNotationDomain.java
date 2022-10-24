@@ -19,7 +19,7 @@ public class PolishNotationDomain
 {
     String value;
 
-    private final static String PolishNotationDomain_CANNOT_BE_EMPTY = "PolishNotationDomain cannot be empty";
+    private final static String PolishNotationDomain_CANNOT_BE_EMPTY = "Polish Notation expression cannot be empty";
 
     public static Validation<Error, PolishNotationDomain> validate(final Request value) {
 

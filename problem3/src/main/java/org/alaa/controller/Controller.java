@@ -13,6 +13,7 @@ import org.alaa.controller.domain.Response;
 import org.alaa.domain.Error;
 import org.alaa.domain.ErrorCode;
 import org.alaa.domain.ErrorResponse;
+import org.alaa.domain.Result;
 import org.alaa.service.Service;
 import org.alaa.service.ValidationService;
 
@@ -89,8 +90,8 @@ public class Controller
                     .fold(invalid-> new ResponseEntity<>(new ErrorResponse(invalid.asJava()),HttpStatus.BAD_REQUEST),
                             valid->service
                                     .getPolishNotion(transactionId,valid._1,valid._2,valid._3)
-                                    .fold(this::invalidResponse,
-                                          this::okResponse));
+                                    .block()
+                                    .fold(this::invalidResponse,this::okResponse));
         }catch (Exception e){
         return new ResponseEntity<>(new ErrorResponse(List.of(new Error(ErrorCode.INTERNAL_SERVER_ERROR.getValue(), e.getMessage()))),HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -107,8 +108,8 @@ public class Controller
         return new ResponseEntity<>(errorResponse,HttpStatus.BAD_REQUEST);
 
     }
-    private ResponseEntity<Response> okResponse(BigDecimal result){
-        Response response =new Response(String.valueOf(result));
+    private ResponseEntity<Response> okResponse(Result result){
+        Response response =new Response(String.valueOf(result.getValue()));
         log.info("Success response: "+response);
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
