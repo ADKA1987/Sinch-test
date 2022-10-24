@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -88,19 +89,27 @@ public class Controller
                     .fold(invalid-> new ResponseEntity<>(new ErrorResponse(invalid.asJava()),HttpStatus.BAD_REQUEST),
                             valid->service
                                     .getPolishNotion(transactionId,valid._1,valid._2,valid._3)
-                                    .fold(errorResponse-> new ResponseEntity<>(errorResponse,HttpStatus.BAD_REQUEST),
-                                            serviceValid-> new ResponseEntity<>(new Response(String.valueOf(serviceValid)),HttpStatus.OK)
-                                    ));
-
+                                    .fold(this::invalidResponse,
+                                          this::okResponse));
         }catch (Exception e){
         return new ResponseEntity<>(new ErrorResponse(List.of(new Error(ErrorCode.INTERNAL_SERVER_ERROR.getValue(), e.getMessage()))),HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     }
-
     private void logRequest(final String transactionId, final String requestUser, final  String requestSystem,final Request request)
     {
         String requestLog="TransactionId: "+transactionId+" ,RequestUser: "+requestUser+" ,RequestSystem: "+ requestSystem+" ,Request: "+request;
         log.info("request: "+requestLog);
+    }
+    private ResponseEntity<ErrorResponse> invalidResponse(final ErrorResponse errorResponse)
+    {
+        log.error("Error was found:\n"+ errorResponse );
+        return new ResponseEntity<>(errorResponse,HttpStatus.BAD_REQUEST);
+
+    }
+    private ResponseEntity<Response> okResponse(BigDecimal result){
+        Response response =new Response(String.valueOf(result));
+        log.info("Success response: "+response);
+        return new ResponseEntity<>(response,HttpStatus.OK);
     }
 }

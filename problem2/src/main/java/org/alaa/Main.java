@@ -2,6 +2,7 @@ package org.alaa;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -41,6 +42,12 @@ public class Main
         {
 
             boolean isNumeric= checkIfNumeric(input[i]);
+
+            if (!isNumeric &&!input[i].equals("+")&&!input[i].equals("-")&&!input[i].equals("*")&&!input[i].equals("/"))
+            {
+                throw new RuntimeException("error");
+
+            }
 
             if (isNumeric)
             {
