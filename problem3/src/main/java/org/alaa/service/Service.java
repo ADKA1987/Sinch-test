@@ -15,7 +15,7 @@ public class Service
 
     IPolishNotationInfrastructureRepository polishNotationInfrastructureRepository;
 
-    public Validation<String,BigDecimal> getPolishNotion(String transactionId, RequestUser requestUser, RequestSystem requestSystem, PolishNotationDomain polishNotationDomain)
+    public Validation<String,BigDecimal> getPolishNotion(final String transactionId,final RequestUser requestUser,final RequestSystem requestSystem,final PolishNotationDomain polishNotationDomain)
     {
         return polishNotationInfrastructureRepository.getPolishNotation(transactionId,requestUser,requestSystem,polishNotationDomain);
     }

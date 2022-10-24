@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.util.Stack;
 
 import static java.lang.System.exit;
-import static java.lang.System.in;
+
 
 public class Main
 {
@@ -44,10 +44,11 @@ public class Main
 
             if (isNumeric)
             {
-                if(stack.size()==2 && i ==input.length-1) {
+
+                stack.push(BigDecimal.valueOf(Double.parseDouble(String.valueOf(input[i]))));
+                if(stack.size()==2 && i ==0) {
                     throw new RuntimeException("error");
                 }
-                stack.push(BigDecimal.valueOf(Double.parseDouble(String.valueOf(input[i]))));
             }
 
             if(stack.size()==1 && !isNumeric)  {

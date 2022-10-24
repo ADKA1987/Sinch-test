@@ -13,7 +13,7 @@ import java.util.Stack;
 
 public class PolishNotationInfrastructureRepository implements IPolishNotationInfrastructureRepository
 {
-    private final Stack stack = new Stack();
+
 
     @Override
     public Validation<String,BigDecimal> getPolishNotation(final String transactionId,final RequestUser requestUser,final RequestSystem requestSystem,
@@ -25,7 +25,7 @@ public class PolishNotationInfrastructureRepository implements IPolishNotationIn
     public  Validation<String,BigDecimal> run(String expression)
     {
         String[] input = expression.split("\\s+");
-
+        final Stack stack = new Stack();
 
         BigDecimal result = null;
         for (int i = input.length - 1; i >= 0; i--)
@@ -35,10 +35,11 @@ public class PolishNotationInfrastructureRepository implements IPolishNotationIn
 
             if (isNumeric)
             {
-                if(stack.size()==2 && i ==input.length-1) {
-                   return Validation.invalid("error");
-                }
+
                 stack.push(BigDecimal.valueOf(Double.parseDouble(String.valueOf(input[i]))));
+                if(stack.size()==2 && i ==0) {
+                    return Validation.invalid("error");
+                }
             }
 
             if(stack.size()==1 && !isNumeric)  {
