@@ -16,3 +16,16 @@ To Run the application please use any Ide and follow the console instruction:
 
 Some cases cae casue an error like (+ 1) and (1 2), the application will return "error"
 ## Problem 3
+  It is same as the second problem but I used Spring boot with java 11, to run the application you can chose use any Ide after importing the project as Maven, or you can use the following command:
+  1. run: 
+  ```
+  mvn clean install
+  ```
+  2. Navigate to the target folder and run:
+
+```
+java -jar problem3-0.0.1-SNAPSHOT.jar
+  ```
+  3. Then you can open any broswer and open:
+
+ [Swagger Page]([(http://localhost:8112/swagger-ui/index.html#/)]).
