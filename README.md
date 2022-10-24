@@ -28,4 +28,4 @@ java -jar problem3-0.0.1-SNAPSHOT.jar
   ```
   3. Then you can open any broswer and open:
 
- [Swagger Page]([(http://localhost:8112/swagger-ui/index.html#/)]).
+ [Swagger Page](http://localhost:8112/swagger-ui/index.html#/).
